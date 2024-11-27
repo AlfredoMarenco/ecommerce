@@ -1,5 +1,5 @@
 <div>
-    {{-- @php
+    @php
         // SDK de Mercado Pago
         require base_path('/vendor/autoload.php');
         // Agrega credenciales
@@ -32,7 +32,7 @@
 
         $preference->items = $products;
         $preference->save();
-    @endphp --}}
+    @endphp
     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-6 container py-8">
         <div class="order-2 lg:order-1 col-span-1 xl:col-span-3">
             <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6">
@@ -149,8 +149,8 @@
                 </div>
                 <div class="text-center">
                     {{-- Botton de Mercado Pago --}}
-                    {{-- <div class="cho-container my-2">
-                    </div> --}}
+                    <div class="cho-container my-2">
+                    </div>
                     <hr class="divide-y divide-gray-400">
                     <!-- Set up a container element for the button -->
                     <div id="paypal-button-container"></div>
@@ -160,7 +160,7 @@
     </div>
 
     @push('script')
-        {{-- <script src="https://sdk.mercadopago.com/js/v2"></script>
+        <script src="https://sdk.mercadopago.com/js/v2"></script>
         <script>
             // Agrega credenciales de SDK
             const mp = new MercadoPago("{{ config('services.mercadopago.key') }}", {
@@ -177,7 +177,7 @@
                     label: 'Pagar con Mercado Pago', // Cambia el texto del botón de pago (opcional)
                 }
             });
-        </script> --}}
+        </script>
         <!-- Include the PayPal JavaScript SDK; replace "test" with your own sandbox Business account app client ID -->
         <script src="https://www.paypal.com/sdk/js?client-id={{ config('services.paypal.client_id') }}&currency=MXN">
         </script>

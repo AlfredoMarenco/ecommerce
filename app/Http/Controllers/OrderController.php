@@ -38,7 +38,7 @@ class OrderController extends Controller
     {
         $this->authorize('author', $order);
         $payment_id = $request->get('payment_id');
-        $response = Http::get("https://api.mercadopago.com/v1/payments/$payment_id" . "?access_token=APP_USR-7164250922873689-110501-617c548ecb7d45ff8a8dcb40111fe4b6-1012887868");
+        $response = Http::get("https://api.mercadopago.com/v1/payments/$payment_id" . "?access_token=APP_USR-7389314295698894-101619-78f34180f700b1e51f2f0b7a2c37833a-2039478025");
         $response = json_decode($response);
         $status = $response->status;
 
