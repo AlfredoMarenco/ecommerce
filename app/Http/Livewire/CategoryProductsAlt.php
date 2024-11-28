@@ -17,6 +17,6 @@ class CategoryProductsAlt extends Component
     public function loadProducts()
     {
         $this->products = $this->category->products()->where('status', 2)->take(15)->get();
-        $this->emit('glider2', $this->category->id);
+        $this->emit('glider', $this->category->id);
     }
 }

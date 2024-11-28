@@ -18,30 +18,21 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
-                'name' => 'Celulares y tablet',
+                'name' => 'Lajas',
                 'slug' => Str::slug('Celulares y tablet'),
                 'icon' => '<i class="fas fa-mobile-alt"></i>'
             ],
             [
-                'name' => 'Tv, audio y video',
-                'slug' => Str::slug('Tv, audio y video'),
+                'name' => 'Canteras',
+                'slug' => Str::slug('Canteras'),
                 'icon' => '<i class="fas fa-tv"></i>'
             ],
             [
-                'name' => 'Consola y videojuegos',
-                'slug' => Str::slug('Consola y videojuegos'),
+                'name' => 'Marmoles',
+                'slug' => Str::slug('Marmoles'),
                 'icon' => '<i class="fas fa-gamepad"></i>'
             ],
-            [
-                'name' => 'Computación',
-                'slug' => Str::slug('Computación'),
-                'icon' => '<i class="fas fa-laptop"></i>'
-            ],
-            [
-                'name' => 'Moda',
-                'slug' => Str::slug('Moda'),
-                'icon' => '<i class="fas fa-tshirt"></i>'
-            ],
+
         ];
 
         foreach ($categories as $category) {

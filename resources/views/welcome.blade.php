@@ -26,8 +26,7 @@
             <div class="somos-riqueza__img pl-0">
                 <img src="{{ asset('img/2.jpg') }}" class="" alt="">
             </div>
-            <div
-                class="somos-riqueza__txt inline-block align-middle lg:pr-8 p-8 ">
+            <div class="somos-riqueza__txt inline-block align-middle lg:pr-8 p-8 ">
                 <h1 class="uppercase text-2xl">Somos Riqueza <span class="natural">Natural</span></h1>
                 <p>Nuestras piedras de cantera mexicana son una fusión sublime entre arte y naturaleza, transformando
                     cualquier espacio en una obra maestra. Cada pieza, tallada por siglos de historia, evoca la esencia
@@ -38,14 +37,15 @@
         </div>
     </section>
     <section class="container py-10">
-        <p class="text-center">Somos una propuesta en piedras naturales para la industria de la construcción e interiorismo,<br> ofreciendo
+        <p class="text-center">Somos una propuesta en piedras naturales para la industria de la construcción e
+            interiorismo,<br> ofreciendo
             una amplia variedad y calidad en nuestros productos</p>
     </section>
     <div>
         {{-- Glider con imagen destacada --}}
         @forelse ($categories as $category)
-            <section class="mb-6 ">
-                @if ($category->name == 'Lajas')
+            @if ($category->name == 'Lajas')
+                <section class="mb-6 ">
                     <div class="flex items-center mb-2 pl-10 categoria">
                         <h1 class="text-3xl uppercase font-semibold text-gray-700">
                             {{ $category->name }} VEINTE <span class="catego__descripcion">X LARGOS</span>
@@ -55,8 +55,8 @@
                             más</a>
                     </div>
                     @livewire('category-products-alt', ['category' => $category])
-                @endif
-            </section>
+                </section>
+            @endif
         @empty
             <section class="mb-6">
                 <p>No hay productos en la base de datos</p>
@@ -65,18 +65,20 @@
 
         {{-- Glider subcategorias --}}
         @forelse ($categories as $category)
-            <section class="mb-6">
-                <div class="flex items-center mb-2">
-                    <h1 class="text-lg uppercase font-semibold text-gray-700">
-                        {{ $category->name }}
-                    </h1>
+            @if ($category->name == 'Lajas')
+                <section class="mb-6">
+                    <div class="flex items-center mb-2">
+                        <h1 class="text-lg uppercase font-semibold text-gray-700">
+                            {{ $category->name }}
+                        </h1>
 
-                    <a href="{{ route('categories.show', $category) }}"
-                        class="text-trueGray-700 ml-2 font-semibold hover:text-trueGray-500 hover:underline">Ver
-                        más</a>
-                </div>
-                @livewire('category-subproducts', ['category' => $category])
-            </section>
+                        <a href="{{ route('categories.show', $category) }}"
+                            class="text-trueGray-700 ml-2 font-semibold hover:text-trueGray-500 hover:underline">Ver
+                            más</a>
+                    </div>
+                    @livewire('category-subproducts', ['category' => $category, 'subcategory' => 'Lajas de diez'])
+                </section>
+            @endif
         @empty
             <section class="mb-6">
                 <p>No hay productos en la base de datos</p>
@@ -88,18 +90,19 @@
         @forelse ($categories as $category)
             <section class="pb-7 pt-7">
                 @if ($category->name == 'Canteras')
-                <div class=" items-center mb-2 pl-10 categoria">
-                    <div class="titular-canteras text-center pb-5">
-                        <h1 class="text-3xl uppercase font-semibold text-gray-700">
-                            {{ $category->name }}
-                        </h1>
-                        <p class="c-descripcion">Descubre nuestra selección de piedras naturales ideales <br> para revestimientos, fachadas y decoraciones.</p>
-                        <a href="{{ route('categories.show', $category) }}"
-                        class="text-trueGray-700 c-descripcion ml-2 font-light hover:text-trueGray-500 hover:underline">Ver
-                        más</a>
-                    </div>
+                    <div class=" items-center mb-2 pl-10 categoria">
+                        <div class="titular-canteras text-center pb-5">
+                            <h1 class="text-3xl uppercase font-semibold text-gray-700">
+                                {{ $category->name }}
+                            </h1>
+                            <p class="c-descripcion">Descubre nuestra selección de piedras naturales ideales <br> para
+                                revestimientos, fachadas y decoraciones.</p>
+                            <a href="{{ route('categories.show', $category) }}"
+                                class="text-trueGray-700 c-descripcion ml-2 font-light hover:text-trueGray-500 hover:underline">Ver
+                                más</a>
+                        </div>
 
-                </div>
+                    </div>
                     @livewire('category-products', ['category' => $category])
                 @endif
             </section>
@@ -111,17 +114,20 @@
 
         {{-- Glider subcategorias --}}
         @forelse ($categories as $category)
-            <section class="mb-6">
-                <div class="flex items-center mb-2">
-                    <h1 class="text-lg uppercase font-semibold text-gray-700">
-                        {{ $category->name }}
-                    </h1>
-                    <a href="{{ route('categories.show', $category) }}"
-                        class="text-trueGray-700 ml-2 font-semibold hover:text-trueGray-500 hover:underline">Ver
-                        más</a>
-                </div>
-                @livewire('category-subproducts', ['category' => $category])
-            </section>
+            @if ($category->name == 'Marmoles')
+                <section class="mb-6">
+                    <div class="flex items-center mb-2">
+                        <h1 class="text-lg uppercase font-semibold text-gray-700">
+                            {{ $category->name }}
+                        </h1>
+
+                        <a href="{{ route('categories.show', $category) }}"
+                            class="text-trueGray-700 ml-2 font-semibold hover:text-trueGray-500 hover:underline">Ver
+                            más</a>
+                    </div>
+                    @livewire('category-subproducts', ['category' => $category, 'subcategory' => 'Marmoles'])
+                </section>
+            @endif
         @empty
             <section class="mb-6">
                 <p>No hay productos en la base de datos</p>
@@ -181,8 +187,8 @@
                     draggable: true,
                     dots: '.glider-' + id + '~ .dots',
                     arrows: {
-                        prev: '.glider1-' + id + '~ .glider-prev',
-                        next: '.glider1-' + id + '~ .glider-next'
+                        prev: '.glider-' + id + '~ .glider-prev',
+                        next: '.glider-' + id + '~ .glider-next'
                     },
                     responsive: [{
                             breakpoint: 640,
@@ -216,6 +222,47 @@
                 });
             });
 
+            Livewire.on('glider2', function(id) {
+                new Glider(document.querySelector('.glider2-' + id), {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    draggable: true,
+                    dots: '.glider2-' + id + '~ .dots',
+                    arrows: {
+                        prev: '.glider2-' + id + '~ .glider2-prev',
+                        next: '.glider2-' + id + '~ .glider2-next'
+                    },
+                    responsive: [{
+                            breakpoint: 640,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 2,
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                            }
+                        },
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                            }
+                        },
+                        {
+                            breakpoint: 1280,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 5,
+                            }
+                        },
+                    ]
+                });
+            });
         </script>
     @endpush
 

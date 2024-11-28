@@ -1,8 +1,8 @@
 <div wire:init='loadProducts'>
    <div class="container">
     @if (count($products))
-    <div class="glider-contain">
-        <ul class="glider-{{ $category->id }}">
+    <div class="glider2-contain">
+        <ul class="glider2-{{ $category->id }}">
             @foreach ($products as $product)
                 <li class="bg-white rounded-lg shadow {{ $loop->last ? '' : 'sm:mr-4' }}">
                     <article>
@@ -30,8 +30,8 @@
             @endforeach
         </ul>
 
-        <button aria-label="Previous" class="glider-prev">«</button>
-        <button aria-label="Next" class="glider-next">»</button>
+        <button aria-label="Previous" class="glider2-prev">«</button>
+        <button aria-label="Next" class="glider2-next">»</button>
         <div role="tablist" class="dots"></div>
     </div>
 @else
