@@ -13,12 +13,13 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Geist-regular', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 trueGray: colors.trueGray,
                 orange: colors.orange,
                 greenLime: colors.lime,
+                canterasColor: colors.canterasColor,
             }
         },
     },

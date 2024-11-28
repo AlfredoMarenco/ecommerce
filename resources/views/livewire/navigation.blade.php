@@ -1,7 +1,7 @@
 <header class="bg-trueGray-900 sticky top-0" style="z-index: 200;" x-data="dropdown()">
-    <div class="container flex items-center h-16 justify-between md:justify-start">
+    <div class="container flex items-center h-16 justify-items-between  md:justify-between pt-2 pb-3">
         {{-- Categories --}}
-        <a x-on:click="show" :class="{'bg-opacity-100 text-trueGray-900 hover:text-trueGray-100': open}"
+        {{-- <a x-on:click="show" :class="{'bg-opacity-100 text-trueGray-900 hover:text-trueGray-100': open}"
             class="flex flex-col items-center justify-center order-last md:order-first bg-white bg-opacity-10 font-semibold cursor-pointer text-white h-full px-6 md:px-4 hover:bg-trueGray-700">
             <svg :class="{'text-trueGray-900 hover:text-trueGray-100': open}" class="h-6 w-6 text-white"
                 stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -9,83 +9,97 @@
                     d="M4 6h16M4 12h16M4 18h16" />
             </svg>
             <span class="text-sm hidden md:block">Categorías</span>
-        </a>
+        </a> --}}
         {{-- Logo --}}
         <a href="/" class="mx-6">
             <x-jet-application-mark class="block h-9 w-auto" />
         </a>
 
         {{-- Search --}}
-        <div class="flex-1 hidden md:block">
+     {{--    <div class="flex-1 hidden md:block">
             @livewire('search')
-        </div>
+        </div> --}}
 
-        {{-- Dropdown --}}
-        <div class="mx-6 relative hidden md:block">
-            @auth
-                <x-jet-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button
-                            class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                            <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
-                                alt="{{ Auth::user()->name }}" />
-                        </button>
-                    </x-slot>
+        <div class="flex mt-2">
+            <div class="flex-1 hidden md:block align-middle">
+                <div class="flex w-full gap-x-8 font-light  sm:border-gray-200 ">
+                    <a href="#" class="text-white">Nosotros</a>
+                    <a href="#" class="text-white">Lajas</a>
+                    <a href="#" class="text-white">Canteras</a>
+                    <a href="#" class="text-white">Mármoles</a>
+                    <a href="#" class="text-white">Colección</a>
+                    <a href="#" class="text-white">Contacto</a>
 
-                    <x-slot name="content">
-                        <!-- Account Management -->
-                        <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Manage Account') }}
-                        </div>
+                </div>
+            </div>
 
-                        <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                            {{ __('Profile') }}
-                        </x-jet-dropdown-link>
+            {{-- Dropdown --}}
+            <div class="mx-6 relative hidden md:block">
+                @auth
+                    <x-jet-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button
+                                class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
+                                    alt="{{ Auth::user()->name }}" />
+                            </button>
+                        </x-slot>
 
-                        @role('admin')
-                            <x-jet-dropdown-link href="{{ route('admin.index') }}">
-                                {{ __('Administrador') }}
+                        <x-slot name="content">
+                            <!-- Account Management -->
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Manage Account') }}
+                            </div>
+
+                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Profile') }}
                             </x-jet-dropdown-link>
-                        @endrole
 
-                        <x-jet-dropdown-link href="{{ route('orders.index') }}">
-                            {{ __('Mis ordenes') }}
-                        </x-jet-dropdown-link>
+                            @role('admin')
+                                <x-jet-dropdown-link href="{{ route('admin.index') }}">
+                                    {{ __('Administrador') }}
+                                </x-jet-dropdown-link>
+                            @endrole
 
-                        <div class="border-t border-gray-100"></div>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-jet-dropdown-link href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                    this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                            <x-jet-dropdown-link href="{{ route('orders.index') }}">
+                                {{ __('Mis ordenes') }}
                             </x-jet-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-jet-dropdown>
-            @else
-                <x-jet-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <i class="fas fa-user-circle text-white text-3xl cursor-pointer"></i>
-                    </x-slot>
-                    <x-slot name="content">
-                        <x-jet-dropdown-link href="{{ route('login') }}">
-                            {{ __('Login') }}
-                        </x-jet-dropdown-link>
-                        <x-jet-dropdown-link href="{{ route('register') }}">
-                            {{ __('Register') }}
-                        </x-jet-dropdown-link>
-                    </x-slot>
-                </x-jet-dropdown>
-            @endauth
-        </div>
 
-        {{-- Cart icon --}}
-        <div class="hidden md:block">
-            @livewire('dropdown-cart')
+                            <div class="border-t border-gray-100"></div>
+
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <x-jet-dropdown-link href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                                                                                                                                                                                                                                                        this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-jet-dropdown-link>
+                            </form>
+                        </x-slot>
+                    </x-jet-dropdown>
+                @else
+                    <x-jet-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <i class="fas fa-user-circle text-white text-3xl cursor-pointer"></i>
+                        </x-slot>
+                        <x-slot name="content">
+                            <x-jet-dropdown-link href="{{ route('login') }}">
+                                {{ __('Login') }}
+                            </x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('register') }}">
+                                {{ __('Register') }}
+                            </x-jet-dropdown-link>
+                        </x-slot>
+                    </x-jet-dropdown>
+                @endauth
+            </div>
+
+            {{-- Cart icon --}}
+            <div class="hidden md:block">
+                @livewire('dropdown-cart')
+            </div>
         </div>
     </div>
 

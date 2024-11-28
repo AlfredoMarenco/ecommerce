@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Livewire;
+
+use Livewire\Component;
+
+class CategoryProductsAlt extends Component
+{
+    public $category;
+    public $products = [];
+
+    public function render()
+    {
+        return view('livewire.category-products-alt');
+    }
+
+    public function loadProducts()
+    {
+        $this->products = $this->category->products()->where('status', 2)->take(15)->get();
+        $this->emit('glider2', $this->category->id);
+    }
+}

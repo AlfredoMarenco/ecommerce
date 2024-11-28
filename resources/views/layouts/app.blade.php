@@ -41,7 +41,7 @@
 <body class="font-sans antialiased">
     <x-jet-banner />
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-canterasColor-100">
         @livewire('navigation')
 
         <!-- Page Heading -->

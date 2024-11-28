@@ -1,6 +1,24 @@
+
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import 'container.css';
 @import 'nav.css';
 @import 'form.css';
+@import 'index.css';
+@import 'producto';
+
+@font-face {
+    font-family: 'Geist-regular';
+    src: url('/font/Geist-UltraLight.otf');
+}
+@font-face {
+    font-family: 'Geist-bold';
+    src: url('/font/Geist-Bold.otf');
+}
+
+@font-face {
+    font-family: 'Italiana';
+    src: url('/font/Italiana-Regular.ttf');
+}
+

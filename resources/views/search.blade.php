@@ -6,7 +6,7 @@
             @empty
                 <li class="bg-white rounded-lg shadow-xl">
                     <div class="p-4 text-center">
-                        <p class="text-trueGray-700 font-semibold">
+                        <p class="text-gray-500 font-light">
                             No se encontro resultados para tu busqueda
                         </p>
                     </div>

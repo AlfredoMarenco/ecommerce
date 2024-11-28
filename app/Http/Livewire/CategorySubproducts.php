@@ -4,14 +4,14 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class CategoryProducts extends Component
+class CategorySubproducts extends Component
 {
     public $category;
     public $products = [];
 
     public function render()
     {
-        return view('livewire.category-products');
+        return view('livewire.category-subproducts');
     }
 
     public function loadProducts()
