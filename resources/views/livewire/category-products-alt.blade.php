@@ -1,12 +1,12 @@
 <div wire:init='loadProducts'>
-    <div class="grid grid-cols-2 gap-10 items-centerajajajajaj">
+    <div class="grid grid-cols-2 gap-10 items-center">
         <div class="col-span-1">
             @if (count($products))
            <div class="container">
             <div class="glider-contain">
                 <ul class="glider-{{ $category->id }}">
                     @foreach ($products as $product)
-                        <li class="bg-white rounded-lg shadow {{ $loop->last ? '' : 'sm:mr-4' }}">
+                        <li class="rounded-lg {{ $loop->last ? '' : 'sm:mr-4' }}">
                             <article>
                                 <figure>
                                     @if ($product->images)
@@ -18,14 +18,15 @@
                                             alt="">
                                     @endif
                                 </figure>
-                                <div class="py-4 px-6">
-                                    <h1 class="text-lg font-semibold">
+                                <div class="pt-3">
+                                    <h1 class="titulo-card text-lg font-semibold">
                                         <a href="{{ route('products.show', $product) }}">
                                             {{ Str::limit($product->name, 20, '...') }}
-                                        </a>
+                                        </a> <br>
+                                        <span class="largos text-sm">20 x largos</span>
                                     </h1>
                                     {{-- <a class="font-bold text-trueGray-700">US$ {{ $product->price }}</a> --}}
-                                    <a href="{{ route('products.show', $product) }}" type="button" class="my-3 rounded-md bg-gray-800 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Ver producto</a>
+                                    <a href="{{ route('products.show', $product) }}" type="button" class="mt-4 rounded bg-gray-800 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-black-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Ver producto</a>
                                 </div>
                             </article>
                         </li>

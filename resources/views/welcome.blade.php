@@ -44,17 +44,63 @@
     <div>
         {{-- Glider con imagen destacada --}}
         @forelse ($categories as $category)
-            <section class="mb-6">
+            <section class="mb-6 ">
                 @if ($category->name == 'Lajas')
-                    <div class="flex items-center mb-2">
-                        <h1 class="text-lg uppercase font-semibold text-gray-700">
-                            {{ $category->name }}
+                    <div class="flex items-center mb-2 pl-10 categoria">
+                        <h1 class="text-3xl uppercase font-semibold text-gray-700">
+                            {{ $category->name }} VEINTE <span class="catego__descripcion">X LARGOS</span>
                         </h1>
                         <a href="{{ route('categories.show', $category) }}"
                             class="text-trueGray-700 ml-2 font-semibold hover:text-trueGray-500 hover:underline">Ver
                             más</a>
                     </div>
                     @livewire('category-products-alt', ['category' => $category])
+                @endif
+            </section>
+        @empty
+            <section class="mb-6">
+                <p>No hay productos en la base de datos</p>
+            </section>
+        @endforelse
+
+        {{-- Glider subcategorias --}}
+        @forelse ($categories as $category)
+            <section class="mb-6">
+                <div class="flex items-center mb-2">
+                    <h1 class="text-lg uppercase font-semibold text-gray-700">
+                        {{ $category->name }}
+                    </h1>
+
+                    <a href="{{ route('categories.show', $category) }}"
+                        class="text-trueGray-700 ml-2 font-semibold hover:text-trueGray-500 hover:underline">Ver
+                        más</a>
+                </div>
+                @livewire('category-subproducts', ['category' => $category])
+            </section>
+        @empty
+            <section class="mb-6">
+                <p>No hay productos en la base de datos</p>
+            </section>
+        @endforelse
+    </div>
+    <div>
+        {{-- Glider con imagen destacada --}}
+        @forelse ($categories as $category)
+            <section class="pb-7 pt-7">
+                @if ($category->name == 'Canteras')
+                <div class=" items-center mb-2 pl-10 categoria">
+                    <div class="titular-canteras text-center pb-5">
+                        <h1 class="text-3xl uppercase font-semibold text-gray-700">
+                            {{ $category->name }}
+                        </h1>
+                        <p class="c-descripcion">Descubre nuestra selección de piedras naturales ideales <br> para revestimientos, fachadas y decoraciones.</p>
+                        <a href="{{ route('categories.show', $category) }}"
+                        class="text-trueGray-700 c-descripcion ml-2 font-light hover:text-trueGray-500 hover:underline">Ver
+                        más</a>
+                    </div>
+
+                </div>
+                    @livewire('category-products', ['category' => $category])
                 @endif
             </section>
         @empty
@@ -135,8 +181,8 @@
                     draggable: true,
                     dots: '.glider-' + id + '~ .dots',
                     arrows: {
-                        prev: '.glider-' + id + '~ .glider-prev',
-                        next: '.glider-' + id + '~ .glider-next'
+                        prev: '.glider1-' + id + '~ .glider-prev',
+                        next: '.glider1-' + id + '~ .glider-next'
                     },
                     responsive: [{
                             breakpoint: 640,
@@ -169,47 +215,7 @@
                     ]
                 });
             });
-            Livewire.on('glider2', function(id) {
-                new Glider(document.querySelector('.glider2-' + id), {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    draggable: true,
-                    dots: '.glider2-' + id + '~ .dots',
-                    arrows: {
-                        prev: '.glider2-' + id + '~ .glider2-prev',
-                        next: '.glider2-' + id + '~ .glider2-next'
-                    },
-                    responsive: [{
-                            breakpoint: 640,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1,
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                slidesToShow: 3,
-                                slidesToScroll: 1,
-                            }
-                        },
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                                slidesToShow: 3,
-                                slidesToScroll: 1,
-                            }
-                        },
-                        {
-                            breakpoint: 1280,
-                            settings: {
-                                slidesToShow: 3,
-                                slidesToScroll: 1,
-                            }
-                        },
-                    ]
-                });
-            });
+
         </script>
     @endpush
 

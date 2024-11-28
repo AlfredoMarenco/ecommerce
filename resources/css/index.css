@@ -86,3 +86,23 @@ body {
     font-family: 'Geist-Bold';
     padding-bottom: 1.5em;
 }
+
+.categoria {
+    font-family: 'Geist-Bold';
+}
+.categoria .catego__descripcion {
+    font-family: 'Italiana';
+    font-size: 1.8rem;
+}
+
+.c-descripcion {
+    font-family: 'Geist-regular';
+}
+
+/* Tarjeta de productos */
+.titulo-card {
+    font-family: 'Geist-Bold';
+}
+.largos {
+    font-family: 'Geist-regular';
+}
