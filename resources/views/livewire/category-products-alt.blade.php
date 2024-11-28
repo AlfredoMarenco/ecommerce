@@ -1,5 +1,5 @@
 <div wire:init='loadProducts'>
-    <div class="grid grid-cols-2 gap-10 items-center">
+    <div class="grid grid-cols-2 gap-10 items-centerajajajajaj">
         <div class="col-span-1">
             @if (count($products))
            <div class="container">
