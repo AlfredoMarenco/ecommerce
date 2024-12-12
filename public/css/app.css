@@ -37575,113 +37575,45 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 90vh;
 }
 
 .cabecera {
-  min-height: 70vh;
   display: flex;
   flex-direction: row;
-  text-align:center;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
 }
 
 .contenido h1 {
-  font-family: 'Geist-Bold';
+  font-family: 'restora-bold';
 }
 
 .contenido {
   display: flex;
   flex-direction: column;
   text-align:center;
+  align-items: center;
   justify-content:center;
-  align-items:center;
-}
-
-.nosotros__contenido p {
-  font-family: 'Geist-regular';
-}
-
-.nosotros {
-  font-weight: 300;
-  min-height: 550px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 4em;
-}
-
-.nosotros__contenido {
-  width: 80%;
-}
-
-.somos-riqueza {
-  padding-top: 4em;
-}
-
-.somos-riqueza__txt h1{
-  font-family: 'Geist-bold';
-}
-
-.somos-riqueza__txt h1 .natural {
-  font-family: 'Italiana';
-}
-
-.somos-riqueza__txt p {
-  font-family: 'Geist-regular';
-  padding-top: 1em;
-}
-
-.galeria__contenido {
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 4em;
-  padding-bottom: 4em;
-}
-
-.galeria h1 {
-  font-family: 'Geist-Bold';
-  padding-bottom: 1em;
-  text-align: center;
-}
-
-.clientes__contenido {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.clientes__contenido h1 {
-  font-family: 'Geist-Bold';
-  padding-bottom: 1.5em;
 }
 
 .categoria {
-  font-family: 'Geist-Bold';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  width: auto;
 }
-
-.categoria .catego__descripcion {
-  font-family: 'Italiana';
-  font-size: 1.8rem;
-}
-
-.c-descripcion {
-  font-family: 'Geist-regular';
-}
-
-/* Tarjeta de productos */
 
 .titulo-card {
-  font-family: 'Geist-Bold';
+  font-family: 'restora-bold';
 }
 
-.largos {
-  font-family: 'Geist-regular';
+.titular-producto p{
+  font-family: 'restora-bold';
+  color: #22397A;
 }
 
 .show__product h1{
@@ -37689,21 +37621,21 @@ body {
 }
 
 @font-face {
-  font-family: 'Geist-regular';
+  font-family: 'restora-bold';
 
-  src: url('/font/Geist-UltraLight.otf');
+  src: url('/font/RestoraBold.ttf');
 }
 
 @font-face {
-  font-family: 'Geist-bold';
+  font-family: 'restora';
 
-  src: url('/font/Geist-Bold.otf');
+  src: url('/font/Restora.ttf');
 }
 
 @font-face {
-  font-family: 'Italiana';
+  font-family: 'meticula';
 
-  src: url('/font/Italiana-Regular.ttf');
+  src: url('/font/Meticula-Bold.ttf');
 }
 
 @media (min-width: 640px) {

@@ -1,10 +1,11 @@
 <x-app-layout>
-    <header class="py-2 bgcabecera">
+    <header class="py-2 bgcabecera" style="background-image: url({{asset('img/header-herbory.png')}})">
         <div class="container mx-auto max-w-7xl sm:px-6 lg:px-8 cabecera">
-            <div class="contenido">
-                <h1 class="text-white uppercase lg:text-3xl md:text-3xl sm:text-sm ">La Armonía Perfecta Entre Piedra
-                    Natural <br> y Diseño de Vanguardia
+            <div class="contenido text-center">
+                <span class="text-white uppercase text-center">encuentra verdaderos</span>
+                <h1 class="text-white lg:text-7xl md:text-3xl sm:text-sm pb-3 pt-3">Productos <br> terapéuticos
                 </h1>
+                <span class="text-white">para el cuidado de tu salud y belleza, abraza tu lado natural. <br>Cámbiate a Herbory.</span>
                 <div class="w-11/12 mt-3">
                     <div class="flex-1 hidden md:block">
                         @livewire('search')
@@ -14,47 +15,26 @@
             </div>
         </div>
     </header>
-    <section class="nosotros py-10">
-        <div class="container nosotros__contenido">
-            <p class="flex text-center">Bazar de Canteras es una empresa dedicada a la distribución de piedras de
-                cantera, enfocada en ofrecer materiales excepcionales para remodelaciones de casas y negocios. Con una
-                amplia selección de piedras naturales, nuestros productos aportan un toque distintivo, ya sea para crear
-                ambientes clásicos, modernos o rústicos. Son perfectos para pisos, fachadas, revestimientos y detalles
-                decorativos.</p>
-        </div>
-        <div class="grid grid-cols-1 gap-10 somos-riqueza py-8 items-center lg:grid lg:grid-cols-2">
-            <div class="somos-riqueza__img pl-0">
-                <img src="{{ asset('img/2.jpg') }}" class="" alt="">
-            </div>
-            <div class="somos-riqueza__txt inline-block align-middle lg:pr-8 p-8 ">
-                <h1 class="uppercase text-2xl">Somos Riqueza <span class="natural">Natural</span></h1>
-                <p>Nuestras piedras de cantera mexicana son una fusión sublime entre arte y naturaleza, transformando
-                    cualquier espacio en una obra maestra. Cada pieza, tallada por siglos de historia, evoca la esencia
-                    ancestral de México. Con texturas únicas y formas que narran la riqueza cultural de nuestra tierra,
-                    ofrecemos materiales que no solo construyen, sino que embellecen y conectan con el alma de tus
-                    proyectos.</p>
-            </div>
-        </div>
-    </section>
-    <section class="container py-10">
-        <p class="text-center">Somos una propuesta en piedras naturales para la industria de la construcción e
-            interiorismo,<br> ofreciendo
-            una amplia variedad y calidad en nuestros productos</p>
+
+    <section class="titular-producto container py-10">
+        <p class="text-center text-xl">Productos terapéuticos naturales para cuidado de la salud, <br>
+            belleza y el medio ambiente.</p>
     </section>
     <div>
         {{-- Glider con imagen destacada --}}
         @forelse ($categories as $category)
-            @if ($category->name == 'Lajas')
+            @if ($category->name == 'Más vistos')
                 <section class="mb-6 ">
-                    <div class="flex items-center mb-2 pl-10 categoria">
-                        <h1 class="text-3xl uppercase font-semibold text-gray-700">
-                            {{ $category->name }} VEINTE <span class="catego__descripcion">X LARGOS</span>
-                        </h1>
-                        <a href="{{ route('categories.show', $category) }}"
-                            class="text-trueGray-700 ml-2 font-semibold hover:text-trueGray-500 hover:underline">Ver
-                            más</a>
-                    </div>
+
                     @livewire('category-products-alt', ['category' => $category])
+                    <div class="flex items-center mb-2 pl-10 pt-8 text-center categoria">
+                        {{--  <h1 class="text-3xl uppercase text-left font-semibold text-gray-700">
+                             {{ $category->name }}
+                         </h1> --}}
+                         <a href="{{ route('categories.show', $category) }}"
+                             class="text-trueGray-700 ml-2 font-semibold hover:text-trueGray-500 hover:underline">Ver
+                             más</a>
+                     </div>
                 </section>
             @endif
         @empty
@@ -62,10 +42,12 @@
                 <p>No hay productos en la base de datos</p>
             </section>
         @endforelse
-
+        <section class="titular-producto container py-10">
+            <p class="text-center text-xl">Los favoritos de nuestros clientes</p>
+        </section>
         {{-- Glider subcategorias --}}
         @forelse ($categories as $category)
-            @if ($category->name == 'Lajas')
+            @if ($category->name == 'Favoritos')
                 <section class="mb-6">
                     <div class="flex items-center mb-2">
                         <h1 class="text-lg uppercase font-semibold text-gray-700">
@@ -111,6 +93,8 @@
                 <p>No hay productos en la base de datos</p>
             </section>
         @endforelse
+
+        <div></div>
 
         {{-- Glider subcategorias --}}
         @forelse ($categories as $category)
@@ -214,7 +198,7 @@
                         {
                             breakpoint: 1280,
                             settings: {
-                                slidesToShow: 3,
+                                slidesToShow: 3.5,
                                 slidesToScroll: 5,
                             }
                         },

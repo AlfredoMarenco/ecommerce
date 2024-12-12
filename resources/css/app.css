@@ -9,16 +9,16 @@
 @import 'producto';
 
 @font-face {
-    font-family: 'Geist-regular';
-    src: url('/font/Geist-UltraLight.otf');
+    font-family: 'restora-bold';
+    src: url('/font/RestoraBold.ttf');
 }
 @font-face {
-    font-family: 'Geist-bold';
-    src: url('/font/Geist-Bold.otf');
+    font-family: 'restora';
+    src: url('/font/Restora.ttf');
 }
 
 @font-face {
-    font-family: 'Italiana';
-    src: url('/font/Italiana-Regular.ttf');
+    font-family: 'meticula';
+    src: url('/font/Meticula-Bold.ttf');
 }
 

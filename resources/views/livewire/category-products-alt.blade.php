@@ -1,10 +1,10 @@
 <div wire:init='loadProducts'>
-    <div class="grid grid-cols-2 gap-10 items-center">
-        <div class="col-span-1">
+    <div class="gap-10 items-center">
+        <div>
             @if (count($products))
            <div class="container">
             <div class="glider-contain">
-                <ul class="glider-{{ $category->id }}">
+                <ul class="glider-{{ $category->id }} pt-3">
                     @foreach ($products as $product)
                         <li class="rounded-lg {{ $loop->last ? '' : 'sm:mr-4' }}">
                             <article>
@@ -19,14 +19,21 @@
                                     @endif
                                 </figure>
                                 <div class="pt-3">
-                                    <h1 class="titulo-card text-lg font-semibold">
-                                        <a href="{{ route('products.show', $product) }}">
-                                            {{ Str::limit($product->name, 20, '...') }}
-                                        </a> <br>
-                                        <span class="largos text-sm">20 x largos</span>
-                                    </h1>
+                                    <div class="grid grid-cols-4 gap-6">
+                                        <div class="grid col-span-3 ">
+                                            <h1 class="titulo-card text-lg font-semibold">
+                                                <a href="{{ route('products.show', $product) }}">
+                                                    {{ Str::limit($product->name, 20, '...') }}
+                                                </a> <br>
+                                                {{-- <span class="largos text-sm">20 x largos</span> --}}
+                                            </h1>
+                                            <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, id!</p>
+                                        </div>
+                                        <span class="precio">$300.00</span>
+                                    </div>
                                     {{-- <a class="font-bold text-trueGray-700">US$ {{ $product->price }}</a> --}}
-                                    <a href="{{ route('products.show', $product) }}" type="button" class="mt-4 rounded bg-gray-800 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-black-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Ver producto</a>
+                                    <a href="{{ route('products.show', $product) }}" type="button" class="mt-4 rounded bg-gray-800 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-black-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                        Agregar al carrito</a>
                                 </div>
                             </article>
                         </li>
@@ -43,11 +50,6 @@
             <i class="fas fa-spinner animate-spin ease duration-300 text-6xl text-indigo-600"></i>
         </div>
         @endif
-        </div>
-        <div class="col-span-1 inline-block align-middle">
-            <div class="pl-0">
-                <img src="{{ asset('img/2.jpg') }}" class="" alt="">
-            </div>
         </div>
     </div>
 
