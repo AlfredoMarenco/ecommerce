@@ -53,10 +53,13 @@
             </header>
         @endif
 
+
         <!-- Page Content -->
         <main>
             {{ $slot }}
         </main>
+
+        <x-footer/>
     </div>
 
     @stack('modals')

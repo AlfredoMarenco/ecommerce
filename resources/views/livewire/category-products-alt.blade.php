@@ -8,9 +8,9 @@
                     @foreach ($products as $product)
                         <li class="rounded-lg {{ $loop->last ? '' : 'sm:mr-4' }}">
                             <article>
-                                <figure>
+                                <figure class="contenedor-imagen ">
                                     @if ($product->images)
-                                        <img class="md:h-48 md:w-full object-cover object-center"
+                                        <img class="md:h-48 md:w-full object-cover"
                                             src="{{ Storage::url($product->images->first()->url) }}" alt="">
                                     @else
                                         <img class="md:h-48 md:w-full object-cover object-center"
@@ -22,17 +22,17 @@
                                     <div class="grid grid-cols-4 gap-6">
                                         <div class="grid col-span-3 ">
                                             <h1 class="titulo-card text-lg font-semibold">
-                                                <a href="{{ route('products.show', $product) }}">
+                                                <a href="{{ route('products.show', $product) }}" ">
                                                     {{ Str::limit($product->name, 20, '...') }}
                                                 </a> <br>
                                                 {{-- <span class="largos text-sm">20 x largos</span> --}}
                                             </h1>
-                                            <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, id!</p>
+                                            <p class="text-gray-500 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, id!</p>
                                         </div>
                                         <span class="precio">$300.00</span>
                                     </div>
                                     {{-- <a class="font-bold text-trueGray-700">US$ {{ $product->price }}</a> --}}
-                                    <a href="{{ route('products.show', $product) }}" type="button" class="mt-4 rounded bg-gray-800 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-black-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                    <a href="{{ route('products.show', $product) }}" type="button" class="mt-4 text-sm ver-producto">
                                         Agregar al carrito</a>
                                 </div>
                             </article>

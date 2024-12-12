@@ -1,7 +1,7 @@
 <x-app-layout>
     <header class="py-2 bgcabecera" style="background-image: url({{asset('img/header-herbory.png')}})">
         <div class="container mx-auto max-w-7xl sm:px-6 lg:px-8 cabecera">
-            <div class="contenido text-center">
+            <div class="contenido-cabecera text-center">
                 <span class="text-white uppercase text-center">encuentra verdaderos</span>
                 <h1 class="text-white lg:text-7xl md:text-3xl sm:text-sm pb-3 pt-3">Productos <br> terapéuticos
                 </h1>
@@ -32,7 +32,7 @@
                              {{ $category->name }}
                          </h1> --}}
                          <a href="{{ route('categories.show', $category) }}"
-                             class="text-trueGray-700 ml-2 font-semibold hover:text-trueGray-500 hover:underline">Ver
+                             class="ver-mas-btn">Ver
                              más</a>
                      </div>
                 </section>
@@ -42,13 +42,19 @@
                 <p>No hay productos en la base de datos</p>
             </section>
         @endforelse
+
+        {{-- categorias herbory --}}
+        <x-categorias-acceso/>
+
+
+        {{-- end categorias herbory --}}
         <section class="titular-producto container py-10">
             <p class="text-center text-xl">Los favoritos de nuestros clientes</p>
         </section>
         {{-- Glider subcategorias --}}
         @forelse ($categories as $category)
-            @if ($category->name == 'Favoritos')
-                <section class="mb-6">
+            @if ($category->name == '')
+                <section class="mb-6 mt-6">
                     <div class="flex items-center mb-2">
                         <h1 class="text-lg uppercase font-semibold text-gray-700">
                             {{ $category->name }}
@@ -67,11 +73,48 @@
             </section>
         @endforelse
     </div>
+    <section class="promo">
+        <div class="container">
+            <div class="contenido">
+                <h3 class="text-white text-2xl">10% de descuento en todos nuestros productos</h3>
+                <a href="">Ver productos</a>
+            </div>
+        </div>
+    </section>
     <div>
+
+        <section class="caracteristicas pt-10">
+            <div class="container">
+                <div class="grid grid-cols-8">
+                    <div class="col-span-2 beneficios">
+                        <img src="{{asset('img/Recurso-1.svg')}}"  class="icono text-center">
+                        <h1 class="beneficio pt-3">100% Naturales</h1>
+                        <p class="descripcion text-center">Nuestros ingredientes son cultivados libres de pesticidas</p>
+                    </div>
+                    <div class="col-span-2 beneficios">
+                        <img src="{{asset('img/Recurso-1.svg')}}"  class="icono text-center">
+                        <h1 class="beneficio pt-3">100% Naturales</h1>
+                        <p class="descripcion text-center">Nuestros ingredientes son cultivados libres de pesticidas</p>
+                    </div>
+                    <div class="col-span-2 beneficios">
+                        <img src="{{asset('img/Recurso-1.svg')}}"  class="icono text-center">
+                        <h1 class="beneficio pt-3">100% Naturales</h1>
+                        <p class="descripcion text-center">Nuestros ingredientes son cultivados libres de pesticidas</p>
+                    </div>
+                    <div class="col-span-2 beneficios">
+                        <img src="{{asset('img/Recurso-1.svg')}}"  class="icono text-center">
+                        <h1 class="beneficio pt-3">100% Naturales</h1>
+                        <p class="descripcion text-center">Nuestros ingredientes son cultivados libres de pesticidas</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         {{-- Glider con imagen destacada --}}
         @forelse ($categories as $category)
             <section class="pb-7 pt-7">
-                @if ($category->name == 'Canteras')
+                @if ($category->name == '')
                     <div class=" items-center mb-2 pl-10 categoria">
                         <div class="titular-canteras text-center pb-5">
                             <h1 class="text-3xl uppercase font-semibold text-gray-700">
@@ -98,7 +141,7 @@
 
         {{-- Glider subcategorias --}}
         @forelse ($categories as $category)
-            @if ($category->name == 'Marmoles')
+            @if ($category->name == '')
                 <section class="mb-6">
                     <div class="flex items-center mb-2">
                         <h1 class="text-lg uppercase font-semibold text-gray-700">
@@ -119,42 +162,31 @@
         @endforelse
     </div>
 
-    <section class="galeria">
-        <div class="container galeria__contenido">
-            <h1 class="titulo-galeria uppercase lg:text-3xl md:text-3xl sm:text-sm">Proyectos en colaboración <br> con
-                bazar de canteras</h1>
-            <div class="imagenes-galeria justify-center align-middle">
-                <img src="{{ asset('img/3.jpg') }}" alt="">
+    <section class="reviews">
+        <div class="container">
+            <div class="reviews__titulo">
+                <h3 class="uppercase text-center">lo que dicen de nosotros</h3>
+                <h1 class="text-center">Naturalmente confiables</h1>
             </div>
-        </div>
-    </section>
+            <div class="reviews__contenido">
+                <div class="grid grid-cols-3 gap-10">
+                    <div class="grid-span-1">
+                        <span>"</span>
+                        <p>Aromas deliciosos, productos qu conservan su calidad con el paso del tiempo y que cuidan el medio mbiente.</p>
+                        <p class="persona">Diana Algo</p>
+                    </div>
+                    <div class="grid-span-1">
+                        <span>"</span>
+                        <p>Aromas deliciosos, productos qu conservan su calidad con el paso del tiempo y que cuidan el medio mbiente.</p>
+                        <p class="persona">Diana Algo</p>
+                    </div>
+                    <div class="grid-span-1">
+                        <span>"</span>
+                        <p>Aromas deliciosos, productos qu conservan su calidad con el paso del tiempo y que cuidan el medio mbiente.</p>
+                        <p class="persona">Diana Algo</p>
+                    </div>
+                </div>
 
-    <section class="clientes">
-        <div class="container clientes__contenido">
-            <h1 class="lg:text-2xl md:text-2xl sm:text-sm">ELLOS HAN CONFIADO EN NOSOTROS</h1>
-            <div class="grid grid-cols-8 gap-6">
-                <div class="col-span-2"><img src="{{ asset('img/logos.png') }}" alt=""></div>
-                <div class="col-span-2"><img src="{{ asset('img/logos.png') }}" alt=""></div>
-                <div class="col-span-2"><img src="{{ asset('img/logos.png') }}" alt=""></div>
-                <div class="col-span-2"><img src="{{ asset('img/logos.png') }}" alt=""></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="nosotros py-10">
-        <div class="grid grid-cols-6 gap-14 somos-riqueza py-8 ">
-            <div class="somos-riqueza__img pl-0 lg:col-span-3 md:col-span-6 sm:col-span-6">
-                <img src="{{ asset('img/negocios.jpg') }}" class="" alt="">
-            </div>
-            <div
-                class="somos-riqueza__txt col-span-3 inline-block align-middle lg:col-span-3 md:col-span-6 sm:col-span-6">
-                <h1 class="uppercase text-2xl">PROYECTOS EMPRESARIALES</h1>
-                <p>Nuestras piedras han transformado hogares y negocios, aportando estilo y durabilidad a cada espacio.
-                    Desde muros revestidos hasta pisos elegantes, nuestros materiales se adaptan a cualquier proyecto de
-                    remodelación y diseño interior de alta calidad.</p>
-                <button type="button"
-                    class="my-3 rounded-md bg-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Recibe
-                    atención personalizada</button>
             </div>
         </div>
     </section>

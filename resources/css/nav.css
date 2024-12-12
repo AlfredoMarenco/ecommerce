@@ -5,3 +5,11 @@
 .navigation-link:hover .navigation-submenu {
     display: block !important;
 }
+.bg-menu {
+    background-color: #22397A;
+    padding-top: .9em;
+    padding-bottom: .9em;
+}
+.menu {
+    font-family: 'restora-bold';
+}

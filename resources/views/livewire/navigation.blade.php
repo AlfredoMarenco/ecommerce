@@ -1,4 +1,4 @@
-<header class="bg-trueGray-900 sticky top-0" style="z-index: 200;" x-data="dropdown()">
+<header class="bg-menu sticky top-0" style="z-index: 200;" x-data="dropdown()">
     <div class="container flex items-center h-16 justify-items-between  md:justify-between pt-2 pb-3">
         {{-- Categories --}}
         {{-- <a x-on:click="show" :class="{'bg-opacity-100 text-trueGray-900 hover:text-trueGray-100': open}"
@@ -20,15 +20,14 @@
             @livewire('search')
         </div> --}}
 
-        <div class="flex mt-2">
+        <div class="flex mt-2 menu">
             <div class="flex-1 hidden md:block align-middle">
                 <div class="flex w-full gap-x-8 font-light  sm:border-gray-200 ">
-                    <a href="#" class="text-white">Nosotros</a>
-                    <a href="#" class="text-white">Lajas</a>
-                    <a href="#" class="text-white">Canteras</a>
-                    <a href="#" class="text-white">Mármoles</a>
-                    <a href="#" class="text-white">Colección</a>
+                    <a href="#" class="text-white">Inicio</a>
+                    <a href="#" class="text-white">Servicios</a>
+                    <a href="#" class="text-white">Productos</a>
                     <a href="#" class="text-white">Contacto</a>
+                    <a href="#" class="text-white">Conoce herbory</a>
 
                 </div>
             </div>
