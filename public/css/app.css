@@ -37858,6 +37858,11 @@ body {
   align-items: center;
 }
 
+.v-cruzada__titulo {
+  font-size: 1.5em;
+  font-family: 'restora-bold';
+}
+
 @font-face {
   font-family: 'restora-bold';
 

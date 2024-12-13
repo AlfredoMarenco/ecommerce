@@ -1,6 +1,6 @@
 <div>
-    <div class="bg-white rounded-lg shadow-lg px-4 py-6 mt-4">
-        <p class="text-lg text-trueGray-700 mb-4">Reseñas {{ $product->reviews->count() }}</p>
+    <div class="py-6 mt-4">
+        <p class="text-lg text-trueGray-700 mb-4 "><span class="font-bold">Reseñas</span> {{ $product->reviews->count() }}</p>
 
         @foreach ($product->reviews as $review)
             <article class="flex items-center mb-4 text-trueGray-800">
