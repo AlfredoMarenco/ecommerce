@@ -1,3 +1,25 @@
 .show__product h1{
     font-family: 'Geist-Bold';
 }
+
+
+.contenedor-producto {
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.contenedor-producto h1 {
+    font-family: 'restora-bold';
+}
+
+
+.v-cruzada {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

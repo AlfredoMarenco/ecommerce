@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="container py-8">
+    <div class="container py-8 contenedor-producto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {{-- Column 1 --}}
             <div>
@@ -53,7 +53,17 @@
                 @endif
             </div>
         </div>
+        <div class="v-cruzada">
+            <div class="container">
+                <h1 class="v-cruzada__titulo">Quizá te pueda interesar</h1>
+                <div class="v-cruzada__productos">
+                    
+                </div>
+            </div>
+        </div>
     </div>
+
+
 
     @push('script')
         <script>
