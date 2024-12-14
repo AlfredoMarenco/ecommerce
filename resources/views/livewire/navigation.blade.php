@@ -23,9 +23,9 @@
         <div class="flex mt-2 menu">
             <div class="flex-1 hidden md:block align-middle">
                 <div class="flex w-full gap-x-8 font-light  sm:border-gray-200 ">
-                    <a href="#" class="text-white">Inicio</a>
+                    <a href="/" class="text-white">Inicio</a>
                     <a href="#" class="text-white">Servicios</a>
-                    <a href="#" class="text-white">Productos</a>
+                    <a href="/categories/mas-vistos" class="text-white">Productos</a>
                     <a href="#" class="text-white">Contacto</a>
                     <a href="#" class="text-white">Conoce herbory</a>
 

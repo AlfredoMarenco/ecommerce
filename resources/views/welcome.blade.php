@@ -25,7 +25,6 @@
         @forelse ($categories as $category)
             @if ($category->name == 'Más vistos')
                 <section class="mb-6 ">
-
                     @livewire('category-products-alt', ['category' => $category])
                     <div class="flex items-center mb-2 pl-10 pt-8 text-center categoria">
                         {{--  <h1 class="text-3xl uppercase text-left font-semibold text-gray-700">
@@ -53,7 +52,7 @@
         </section>
         {{-- Glider subcategorias --}}
         @forelse ($categories as $category)
-            @if ($category->name == '')
+            @if ($category->name == 'Favoritos')
                 <section class="mb-6 mt-6">
                     <div class="flex items-center mb-2">
                         <h1 class="text-lg uppercase font-semibold text-gray-700">
@@ -64,7 +63,7 @@
                             class="text-trueGray-700 ml-2 font-semibold hover:text-trueGray-500 hover:underline">Ver
                             más</a>
                     </div>
-                    @livewire('category-subproducts', ['category' => $category, 'subcategory' => 'Lajas de diez'])
+                    @livewire('category-subproducts', ['category' => $category, 'subcategory' => 'CREMAS'])
                 </section>
             @endif
         @empty
@@ -113,21 +112,8 @@
 
         {{-- Glider con imagen destacada --}}
         @forelse ($categories as $category)
-            <section class="pb-7 pt-7">
-                @if ($category->name == '')
-                    <div class=" items-center mb-2 pl-10 categoria">
-                        <div class="titular-canteras text-center pb-5">
-                            <h1 class="text-3xl uppercase font-semibold text-gray-700">
-                                {{ $category->name }}
-                            </h1>
-                            <p class="c-descripcion">Descubre nuestra selección de piedras naturales ideales <br> para
-                                revestimientos, fachadas y decoraciones.</p>
-                            <a href="{{ route('categories.show', $category) }}"
-                                class="text-trueGray-700 c-descripcion ml-2 font-light hover:text-trueGray-500 hover:underline">Ver
-                                más</a>
-                        </div>
-
-                    </div>
+            <section>
+                @if ($category->name == 'Computación')
                     @livewire('category-products', ['category' => $category])
                 @endif
             </section>

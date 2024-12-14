@@ -37676,7 +37676,7 @@ body {
 /* Card */
 
 .contenedor-imagen {
-  height: 270px;
+  max-height: 270px;
   width: 100%;
 }
 

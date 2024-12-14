@@ -8,12 +8,12 @@
                     @foreach ($products as $product)
                         <li class="rounded-lg {{ $loop->last ? '' : 'sm:mr-4' }}">
                             <article>
-                                <figure class="contenedor-imagen ">
+                                <figure class="contenedor-imagen">
                                     @if ($product->images)
-                                        <img class="md:h-48 md:w-full object-cover"
+                                        <img class="md:h-full md:w-full object-cover"
                                             src="{{ Storage::url($product->images->first()->url) }}" alt="">
                                     @else
-                                        <img class="md:h-48 md:w-full object-cover object-center"
+                                        <img class="md:h-full md:w-full object-cover object-center"
                                             src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                                             alt="">
                                     @endif
