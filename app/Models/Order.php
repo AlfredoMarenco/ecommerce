@@ -38,4 +38,10 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    //Relation one a much inverse with coupons
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class);
+    }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Livewire\Admin\BrandComponent;
 use App\Http\Livewire\Admin\CityComponent;
+use App\Http\Livewire\Admin\CouponComponent;
 use App\Http\Livewire\Admin\DepartmentComponent;
 use App\Http\Livewire\Admin\ShowCategory;
 use App\Http\Livewire\Admin\ShowDepartment;
@@ -27,6 +28,7 @@ Route::get('departments', DepartmentComponent::class)->name('admin.departments.i
 Route::get('departments/{department}', ShowDepartment::class)->name('admin.departments.show');
 Route::get('departments/cities/{city}', CityComponent::class)->name('admin.cities.show');
 Route::get('users', UserComponent::class)->name('admin.users.index');
+Route::get('coupons',CouponComponent::class)->name('admin.coupons.index');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
