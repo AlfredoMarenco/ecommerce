@@ -37,16 +37,16 @@ class SubcategorySeeder extends Seeder
             /* Tv audio y video */
             [
                 'category_id' => 2,
-                'name' => 'Canteras de trinta',
-                'slug' => Str::slug('Canteras de trinta'),
+                'name' => 'Cremas',
+                'slug' => Str::slug('Cremas'),
             ],
 
             /* Consola y videojuegos */
 
             [
                 'category_id' => 3,
-                'name' => 'Marmoles',
-                'slug' => Str::slug('Marmoles'),
+                'name' => 'Jabones',
+                'slug' => Str::slug('Jabones'),
             ],
 
         ];

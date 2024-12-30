@@ -85,7 +85,8 @@
             <table class="text-trueGray-600">
                 <thead class="border-b border-trueGray-500">
                     <tr>
-                        <th class="w-full py-2 text-left">Nombre</th>
+                        <th class="w-1/2 py-2 text-left">Nombre</th>
+                        <th class="w-full py-2 text-left">Tipo</th>
                         <th class="py-2">Accion</th>
                     </tr>
                 </thead>
@@ -95,6 +96,25 @@
                             <td class="py-2">
                                 <span class="uppercase">
                                     {{ $coupon->name }}
+                                </span>
+                            </td>
+                            <td class="py-2">
+                                <span class="uppercase">
+                                    @switch($coupon->type)
+                                        @case(1)
+                                            Porcentaje
+                                        @break
+                                        @case(2)
+                                            Cantidad
+                                        @break
+                                        @case(3)
+                                            Minimo
+                                        @break
+                                        @case(4)
+                                            Envio Gratis
+                                        @break
+                                        @default
+                                    @endswitch
                                 </span>
                             </td>
                             <td class="py-2">

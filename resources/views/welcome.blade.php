@@ -1,11 +1,12 @@
 <x-app-layout>
-    <header class="py-2 bgcabecera" style="background-image: url({{asset('img/header-herbory.png')}})">
+    <header class="py-2 bgcabecera" style="background-image: url({{ asset('img/header-herbory.png') }})">
         <div class="container mx-auto max-w-7xl sm:px-6 lg:px-8 cabecera">
             <div class="contenido-cabecera text-center">
                 <span class="text-white uppercase text-center">encuentra verdaderos</span>
                 <h1 class="text-white lg:text-7xl md:text-3xl sm:text-sm pb-3 pt-3">Productos <br> terapéuticos
                 </h1>
-                <span class="text-white">para el cuidado de tu salud y belleza, abraza tu lado natural. <br>Cámbiate a Herbory.</span>
+                <span class="text-white">para el cuidado de tu salud y belleza, abraza tu lado natural. <br>Cámbiate a
+                    Herbory.</span>
                 <div class="w-11/12 mt-3">
                     <div class="flex-1 hidden md:block">
                         @livewire('search')
@@ -28,12 +29,11 @@
                     @livewire('category-products-alt', ['category' => $category])
                     <div class="flex items-center mb-2 pl-10 pt-8 text-center categoria">
                         {{--  <h1 class="text-3xl uppercase text-left font-semibold text-gray-700">
-                             {{ $category->name }}
-                         </h1> --}}
-                         <a href="{{ route('categories.show', $category) }}"
-                             class="ver-mas-btn">Ver
-                             más</a>
-                     </div>
+                            {{ $category->name }}
+                        </h1> --}}
+                        <a href="{{ route('categories.show', $category) }}" class="ver-mas-btn">Ver
+                            más</a>
+                    </div>
                 </section>
             @endif
         @empty
@@ -43,7 +43,7 @@
         @endforelse
 
         {{-- categorias herbory --}}
-        <x-categorias-acceso/>
+        <x-categorias-acceso />
 
 
         {{-- end categorias herbory --}}
@@ -86,22 +86,22 @@
             <div class="container">
                 <div class="grid grid-cols-8">
                     <div class="col-span-2 beneficios">
-                        <img src="{{asset('img/Recurso-1.svg')}}"  class="icono text-center">
+                        <img src="{{ asset('img/Recurso-1.svg') }}" class="icono text-center">
                         <h1 class="beneficio pt-3">100% Naturales</h1>
                         <p class="descripcion text-center">Nuestros ingredientes son cultivados libres de pesticidas</p>
                     </div>
                     <div class="col-span-2 beneficios">
-                        <img src="{{asset('img/Recurso-1.svg')}}"  class="icono text-center">
+                        <img src="{{ asset('img/Recurso-1.svg') }}" class="icono text-center">
                         <h1 class="beneficio pt-3">100% Naturales</h1>
                         <p class="descripcion text-center">Nuestros ingredientes son cultivados libres de pesticidas</p>
                     </div>
                     <div class="col-span-2 beneficios">
-                        <img src="{{asset('img/Recurso-1.svg')}}"  class="icono text-center">
+                        <img src="{{ asset('img/Recurso-1.svg') }}" class="icono text-center">
                         <h1 class="beneficio pt-3">100% Naturales</h1>
                         <p class="descripcion text-center">Nuestros ingredientes son cultivados libres de pesticidas</p>
                     </div>
                     <div class="col-span-2 beneficios">
-                        <img src="{{asset('img/Recurso-1.svg')}}"  class="icono text-center">
+                        <img src="{{ asset('img/Recurso-1.svg') }}" class="icono text-center">
                         <h1 class="beneficio pt-3">100% Naturales</h1>
                         <p class="descripcion text-center">Nuestros ingredientes son cultivados libres de pesticidas</p>
                     </div>
@@ -158,17 +158,20 @@
                 <div class="grid grid-cols-3 gap-10">
                     <div class="grid-span-1">
                         <span>"</span>
-                        <p>Aromas deliciosos, productos qu conservan su calidad con el paso del tiempo y que cuidan el medio mbiente.</p>
+                        <p>Aromas deliciosos, productos qu conservan su calidad con el paso del tiempo y que cuidan el
+                            medio mbiente.</p>
                         <p class="persona">Diana Algo</p>
                     </div>
                     <div class="grid-span-1">
                         <span>"</span>
-                        <p>Aromas deliciosos, productos qu conservan su calidad con el paso del tiempo y que cuidan el medio mbiente.</p>
+                        <p>Aromas deliciosos, productos qu conservan su calidad con el paso del tiempo y que cuidan el
+                            medio mbiente.</p>
                         <p class="persona">Diana Algo</p>
                     </div>
                     <div class="grid-span-1">
                         <span>"</span>
-                        <p>Aromas deliciosos, productos qu conservan su calidad con el paso del tiempo y que cuidan el medio mbiente.</p>
+                        <p>Aromas deliciosos, productos qu conservan su calidad con el paso del tiempo y que cuidan el
+                            medio mbiente.</p>
                         <p class="persona">Diana Algo</p>
                     </div>
                 </div>

@@ -18,18 +18,18 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
-                'name' => 'Lajas',
-                'slug' => Str::slug('Celulares y tablet'),
+                'name' => 'Mas Vistos',
+                'slug' => Str::slug('Mas Vistos'),
                 'icon' => '<i class="fas fa-mobile-alt"></i>'
             ],
             [
-                'name' => 'Canteras',
-                'slug' => Str::slug('Canteras'),
+                'name' => 'Favoritos',
+                'slug' => Str::slug('Favoritos'),
                 'icon' => '<i class="fas fa-tv"></i>'
             ],
             [
-                'name' => 'Marmoles',
-                'slug' => Str::slug('Marmoles'),
+                'name' => 'Cremas',
+                'slug' => Str::slug('Cremas'),
                 'icon' => '<i class="fas fa-gamepad"></i>'
             ],
 
