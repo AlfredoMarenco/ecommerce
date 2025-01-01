@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\City;
+use App\Models\Coupon;
 use App\Models\Department;
 use App\Models\District;
 use App\Models\Order;
@@ -16,6 +17,8 @@ class CreateOrder extends Component
     public $department_id = "", $city_id = "", $district_id = "";
     public $address, $references, $contact, $phone, $shipping_cost = 0;
     public $shipping_type = 1;
+    public $coupon_code;
+    public $discount;
 
     public $rules = [
         'contact' => 'required',
@@ -48,6 +51,10 @@ class CreateOrder extends Component
         $this->shipping_cost = $city->cost;
         $this->districts = District::where('city_id', $value)->get();
         $this->reset('district_id');
+    }
+
+    public function applyCoupon(){
+        $this->discount = Coupon::where('code', $this->coupon_code)->first();
     }
 
     public function createOrder()
@@ -97,6 +104,11 @@ class CreateOrder extends Component
 
         Cart::destroy();
         return redirect()->route('orders.payment', $order);
+    }
+
+    public function resetDiscount(){
+        $this->reset('discount');
+        $this->reset('coupon_code');
     }
 
     public function render()

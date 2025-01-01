@@ -15,7 +15,7 @@
                 <x-jet-input-error for="phone" />
             </div>
         </div>
-        <div x-data="{shipping_type:@entangle('shipping_type')}">
+        <div x-data="{ shipping_type: @entangle('shipping_type') }">
             <p class="mt-6 mb-3 text-lg text-trueGray-700 font-semibold">Envios</p>
 
             <label class="flex items-center bg-white rounded-lg shadow px-6 py-4 mb-4">
@@ -28,12 +28,13 @@
 
             <div class="bg-white rounded-lg shadow">
                 <label class="flex items-center px-6 py-4">
-                    <input x-model="shipping_type" type="radio" name="shipping_type" value="2" class="text-gray-600">
+                    <input x-model="shipping_type" type="radio" name="shipping_type" value="2"
+                        class="text-gray-600">
                     <span class="ml-2 text-trueGray-700">
                         Envío a domicilio
                     </span>
                 </label>
-                <div class="px-6 pb-6 grid grid-cols-2 gap-6" :class='{"hidden":shipping_type!=2 }'>
+                <div class="px-6 pb-6 grid grid-cols-2 gap-6" :class='{ "hidden": shipping_type != 2 }'>
                     {{-- Departamentos --}}
                     <div>
                         <x-jet-label value="Departamento" />
@@ -129,6 +130,12 @@
                     Subtotal
                     <span class="font-semibold">{{ Cart::subtotal() }} USD</span>
                 </p>
+                @if ($discount)
+                    <p class="flex justify-between items-center text-red-500">
+                        Descuento
+                        <span class="font-semibold text-red-500">-{{ $discount->value }} USD</span>
+                    </p>
+                @endif
                 <p class="flex justify-between items-center">
                     Envio
                     @if ($shipping_type == 1 || $shipping_cost == 0)
@@ -144,9 +151,43 @@
                     @if ($shipping_type == 1)
                         {{ Cart::subtotal() }} USD
                     @else
-                        {{ Cart::subtotal() + $shipping_cost }} USD</span>
+                        @if ($discount)
+                            @switch($discount->type)
+                                @case(2)
+                                    {{ Cart::subtotal() + $shipping_cost - $discount->value }} USD</span>
+                                @break
+                            @endswitch
+                        @else
+                            {{ Cart::subtotal() + $shipping_cost }} USD</span>
+                        @endif
                     @endif
                 </p>
+            </div>
+            <div class="flex mt-6 mb-3 text-lg text-trueGray-700 font-sans">
+                @if ($discount)
+                    <div class="w-full">
+                        <p class="flex justify-around text-sm text-gray-700 border-2 border-trueGray w-full p-2 rounded-lg">
+                            {{ $discount->name }} - {{ $discount->code }}
+
+                            <svg wire:click="resetDiscount" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 cursor-pointer">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </p>
+                    </div>
+                @else
+                    <div class="w-full">
+                        <x-jet-label value="Cupon" />
+                        <x-jet-input class="w-full" type="text" wire:model="coupon_code" wire:key.enter="applyCoupon" />
+                        <x-jet-input-error for="coupon_code" />
+                    </div>
+                    <div>
+                        <x-jet-button class="mt-6 mb-4 rounded ml-2" wire:click="applyCoupon"
+                            wire:loading.attr='disabled' wire:target='applyCoupon'>
+                            Aplicar
+                        </x-jet-button>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
