@@ -32,7 +32,7 @@
                 </select>
                 <x-jet-input-error for="createForm.type" />
             </div>
-            @if ($createForm['type'] <= 2 || $createForm['type'] == 4)
+            @if ($createForm['type'] <= 3 || $createForm['type'] == 4)
                 <div class="col-span-6 sm:col-span-4">
                     <x-jet-label value="Codigo" />
                     <x-jet-input wire:model="createForm.code" type="text" placeholder="Codigo de cupon"
@@ -40,7 +40,15 @@
                     <x-jet-input-error for="createForm.code" />
                 </div>
             @endif
-            @if ($createForm['type'] <= 3 || $createForm['type'] == 4)
+            @if ($createForm['type'] == 3)
+                <div class="col-span-6 sm:col-span-4">
+                    <x-jet-label value="Valor minimo" />
+                    <x-jet-input wire:model="createForm.minimum" type="text" placeholder="Valor minimo de la orden"
+                        class="w-full" />
+                    <x-jet-input-error for="createForm.minimum" />
+                </div>
+            @endif
+            @if ($createForm['type'] <= 3)
                 <div class="col-span-6 sm:col-span-4">
                     <x-jet-label value="Valor" />
                     <x-jet-input wire:model="createForm.value" type="text" placeholder="Valor del cupon"
@@ -104,15 +112,19 @@
                                         @case(1)
                                             Porcentaje
                                         @break
+
                                         @case(2)
                                             Cantidad
                                         @break
+
                                         @case(3)
                                             Minimo
                                         @break
+
                                         @case(4)
                                             Envio Gratis
                                         @break
+
                                         @default
                                     @endswitch
                                 </span>

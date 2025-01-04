@@ -18,13 +18,13 @@
         <div x-data="{ shipping_type: @entangle('shipping_type') }">
             <p class="mt-6 mb-3 text-lg text-trueGray-700 font-semibold">Envios</p>
 
-            <label class="flex items-center bg-white rounded-lg shadow px-6 py-4 mb-4">
+            {{-- <label class="flex items-center bg-white rounded-lg shadow px-6 py-4 mb-4">
                 <input x-model="shipping_type" type="radio" name="shipping_type" value="1" class="text-gray-600">
                 <span class="ml-2 text-trueGray-700">
                     Recojo en tienda (Calle falsa 123).
                 </span>
                 <span class="font-semibold text-trueGray-700 ml-auto">Gratis</span>
-            </label>
+            </label> --}}
 
             <div class="bg-white rounded-lg shadow">
                 <label class="flex items-center px-6 py-4">
@@ -89,10 +89,18 @@
                 Continuar con la compra
             </x-jet-button>
             <hr>
-            <p class="text-sm text-trueGray-700 mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere
-                ea mollitia explicabo perspiciatis nulla
-                est cum nobis maiores, obcaecati molestiae ipsa atque adipisci molestias iure quam. Distinctio nisi
-                earum mollitia.<a class="font-semibold text-trueGray-900">Politicas de privacidad</a></p>
+            <p class="text-sm text-trueGray-700 mt-2 text-justify">
+                En nuestro portal de pago, la privacidad y seguridad de nuestros clientes son nuestra máxima prioridad.
+                Garantizamos que los datos personales y financieros proporcionados estarán protegidos bajo estrictos
+                estándares de confidencialidad y no serán utilizados para ningún propósito diferente al proceso de pago
+                autorizado.
+
+                No compartiremos, venderemos ni divulgaremos su información a terceros, excepto cuando sea estrictamente
+                necesario para completar la transacción o requerido por ley.
+
+                Al utilizar este portal, acepta nuestras políticas de privacidad y términos de uso. Si tiene alguna
+                pregunta o inquietud, no dude en contactarnos.<a class="font-semibold text-trueGray-900">Politicas de
+                    privacidad</a></p>
         </div>
     </div>
     <div class="lg:col-span-2 order-1 lg:order-2">
@@ -133,7 +141,26 @@
                 @if ($discount)
                     <p class="flex justify-between items-center text-red-500">
                         Descuento
-                        <span class="font-semibold text-red-500">-{{ $discount->value }} USD</span>
+                        @switch($discount->type)
+                            @case(1)
+                                <span>{{ (Cart::subtotal() * $discount->value) / 100 }}
+                                    USD</span>
+                            @break
+
+                            @case(2)
+                                <span class="font-semibold text-red-500">-{{ $discount->value }} USD</span>
+                            @break
+
+                            @case(3)
+                                <span class="font-semibold text-red-500">-{{ $discount->value }} USD</span>
+                            @break
+
+                            @case(4)
+                                <span class="font-semibold text-red-500">-{{ $shipping_cost }} USD</span>
+                            @break
+
+                            @default
+                        @endswitch
                     </p>
                 @endif
                 <p class="flex justify-between items-center">
@@ -153,8 +180,21 @@
                     @else
                         @if ($discount)
                             @switch($discount->type)
+                                @case(1)
+                                    {{ Cart::subtotal() + $shipping_cost - (Cart::subtotal() * $discount->value) / 100 }}
+                                    USD</span>
+                                @break
+
                                 @case(2)
                                     {{ Cart::subtotal() + $shipping_cost - $discount->value }} USD</span>
+                                @break
+
+                                @case(3)
+                                    {{ Cart::subtotal() + $shipping_cost - $discount->value }} USD</span>
+                                @break
+
+                                @case(4)
+                                    {{ Cart::subtotal() - $shipping_cost }} USD</span>
                                 @break
                             @endswitch
                         @else
@@ -162,24 +202,30 @@
                         @endif
                     @endif
                 </p>
+
             </div>
             <div class="flex mt-6 mb-3 text-lg text-trueGray-700 font-sans">
                 @if ($discount)
                     <div class="w-full">
-                        <p class="flex justify-around text-sm text-gray-700 border-2 border-trueGray w-full p-2 rounded-lg">
+                        <p
+                            class="flex justify-around text-sm text-gray-700 border-2 border-trueGray w-full p-2 rounded-lg">
                             {{ $discount->name }} - {{ $discount->code }}
 
                             <svg wire:click="resetDiscount" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 cursor-pointer">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                        </svg>
-                    </p>
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 cursor-pointer">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
+                        </p>
                     </div>
                 @else
                     <div class="w-full">
                         <x-jet-label value="Cupon" />
-                        <x-jet-input class="w-full" type="text" wire:model="coupon_code" wire:key.enter="applyCoupon" />
+                        <x-jet-input class="w-full {{ session()->has('message') ? 'border-red-500' : '' }}"
+                            type="text" wire:model="coupon_code" wire:keydown.enter='applyCoupon' />
                         <x-jet-input-error for="coupon_code" />
+                        @if (session()->has('message'))
+                            <span class="text-sm text-red-500">{{ session('message') }}</span>
+                        @endif
                     </div>
                     <div>
                         <x-jet-button class="mt-6 mb-4 rounded ml-2" wire:click="applyCoupon"

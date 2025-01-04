@@ -16,9 +16,10 @@ class CreateOrder extends Component
     public $departments, $cities = [], $districts = [];
     public $department_id = "", $city_id = "", $district_id = "";
     public $address, $references, $contact, $phone, $shipping_cost = 0;
-    public $shipping_type = 1;
+    public $shipping_type = 2;
     public $coupon_code;
-    public $discount;
+    public $discount = null;
+    public $flag_discount = true;
 
     public $rules = [
         'contact' => 'required',
@@ -54,7 +55,30 @@ class CreateOrder extends Component
     }
 
     public function applyCoupon(){
-        $this->discount = Coupon::where('code', $this->coupon_code)->first();
+        $discount = Coupon::where('code', $this->coupon_code)->where('status',1)->first();
+
+        if ($discount) {
+            switch ($discount->type) {
+                case '1':
+                    $this->discount = $discount;
+                    break;
+                case '2':
+                    $this->discount = $discount;
+                    break;
+                case '3':
+                    if ($discount->minimum < Cart::subtotal()) {
+                        $this->discount = $discount;
+                    }else{
+                        session()->flash('message', 'Compra no cumple con el minimo para aplicarse');
+                    }
+                    break;
+                case '4':
+                    $this->discount = $discount;
+                    break;
+            }
+        }else{
+            session()->flash('message', 'Codigo no valido');
+        }
     }
 
     public function createOrder()
