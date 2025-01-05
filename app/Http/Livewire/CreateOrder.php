@@ -100,7 +100,26 @@ class CreateOrder extends Component
         $order->phone = $this->phone;
         $order->shipping_type = $this->shipping_type;
         $order->shipping_cost = 0;
-        $order->total = $this->shipping_cost + Cart::subtotal();
+        if ($this->discount) {
+            switch ($this->discount->type) {
+                case '1':
+                    $order->total = Cart::subtotal() + $this->shipping_cost - (Cart::subtotal() * $this->discount->value) / 100;
+                    break;
+                case '2':
+                    $order->total = Cart::subtotal() + $this->shipping_cost - $this->discount->value;
+                    break;
+                case '3':
+                    $order->total = Cart::subtotal() + $this->shipping_cost - $this->discount->value;
+                    break;
+                case '4':
+                    $order->total = Cart::subtotal() - $this->shipping_cost;
+                    break;
+            }
+        }else{
+            $order->total = $this->shipping_cost + Cart::subtotal();
+        }
+        $order->coupon_id = $this->discount->id;
+
         $order->content = Cart::content();
 
         if ($this->shipping_type == 2) {
@@ -111,7 +130,6 @@ class CreateOrder extends Component
                 'district' => District::find($this->district_id)->name,
                 'address' => $this->address,
                 'reference' => $this->references,
-
             ]);
         }
 
